@@ -29,14 +29,14 @@ describe('capturePage', () => {
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://localhost:1234/simple/page/capture",
+                pageURL: "https://local.tax.service.gov.uk/simple/page/capture",
                 pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main></html>",
                 timestamp: "0000000002",
                 files: {"file1": "some contents"}
             })
         expect(res.statusCode).toEqual(201)
         expect(global.status).toEqual('PAGES_CAPTURED')
-        expect(global.capturedUrls).toEqual(["http://localhost:1234/simple/page/capture"])
+        expect(global.capturedUrls).toEqual(["https://local.tax.service.gov.uk/simple/page/capture"])
     });
 
     it("should not capture a page with URL containing test-only", async () => {
@@ -44,14 +44,14 @@ describe('capturePage', () => {
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://localhost:1234/test-only/page",
+                pageURL: "https://local.tax.service.gov.uk/test-only/page",
                 pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main></html>",
                 timestamp: "0000000002",
                 files: {"file1": "some contents"}
             })
         expect(res.statusCode).toEqual(400)
         expect(global.status).toEqual('READY')
-        expect(global.excludedUrls).toEqual(["http://localhost:1234/test-only/page"])
+        expect(global.excludedUrls).toEqual(["https://local.tax.service.gov.uk/test-only/page"])
     });
 
     it("should not capture a page with URL containing -stub", async () => {
@@ -59,14 +59,14 @@ describe('capturePage', () => {
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://localhost:1234/my-stub/page",
+                pageURL: "https://local.tax.service.gov.uk/my-stub/page",
                 pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main></html>",
                 timestamp: "0000000002",
                 files: {"file1": "some contents"}
             })
         expect(res.statusCode).toEqual(400)
         expect(global.status).toEqual('READY')
-        expect(global.excludedUrls).toEqual(["http://localhost:1234/my-stub/page"])
+        expect(global.excludedUrls).toEqual(["https://local.tax.service.gov.uk/my-stub/page"])
     });
 
     it("should capture a page with URL matching allowListRegex", async () => {
@@ -74,14 +74,14 @@ describe('capturePage', () => {
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://localhost:1234/secure-message-stub/page",
+                pageURL: "https://local.tax.service.gov.uk/secure-message-stub/page",
                 pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main></html>",
                 timestamp: "0000000002",
                 files: {"file1": "some contents"}
             })
         expect(res.statusCode).toEqual(201)
         expect(global.status).toEqual('PAGES_CAPTURED')
-        expect(global.capturedUrls).toEqual(["http://localhost:1234/secure-message-stub/page"])
+        expect(global.capturedUrls).toEqual(["https://local.tax.service.gov.uk/secure-message-stub/page"])
     });
 
     it("should not capture a page which does not match htmlContentRegEx", async () => {
@@ -89,14 +89,14 @@ describe('capturePage', () => {
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://localhost:1234/simple/page/capture",
+                pageURL: "https://local.tax.service.gov.uk/simple/page/capture",
                 pageHTML: '{"this page":"is not a HTML"}',
                 timestamp: "0000000002",
                 files: {"file1": "some contents"}
             })
         expect(res.statusCode).toEqual(400)
         expect(global.status).toEqual('READY')
-        expect(global.excludedUrls).toEqual(["http://localhost:1234/simple/page/capture"])
+        expect(global.excludedUrls).toEqual(["https://local.tax.service.gov.uk/simple/page/capture"])
     });
 
     it("should not capture a page with URL not using localhost", async () => {
@@ -104,14 +104,14 @@ describe('capturePage', () => {
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://local:1234/my-page",
+                pageURL: "http://local/my-page",
                 pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main></html>",
                 timestamp: "0000000002",
                 files: {"file1": "some contents"}
             })
         expect(res.statusCode).toEqual(400)
         expect(global.status).toEqual('READY')
-        expect(global.excludedUrls).toEqual(["http://local:1234/my-page"])
+        expect(global.excludedUrls).toEqual(["http://local/my-page"])
     });
 
     it("should not capture js assets for a page", async () => {
@@ -119,7 +119,7 @@ describe('capturePage', () => {
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://localhost:1234/simple/page/capture",
+                pageURL: "https://local.tax.service.gov.uk/simple/page/capture",
                 pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main></html>",
                 timestamp: "0000000002",
                 files: {"file1.js": "some contents"}
@@ -142,7 +142,7 @@ describe('capturePage', () => {
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://localhost:1234/simple/page/capture",
+                pageURL: "https://local.tax.service.gov.uk/simple/page/capture",
                 pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main></html>",
                 timestamp: "0000000002",
                 files: {"file1": "some contents"}
@@ -153,41 +153,41 @@ describe('capturePage', () => {
     });
 
     it('should not capture a HTML page when it is already captured', async () => {
-        capture("http://localhost:1234/simple/page/capture")
+        capture("https://local.tax.service.gov.uk/simple/page/capture")
         applicationStatus('PAGES_CAPTURED');
 
         const res = await request(app)
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://localhost:1234/simple/page/capture",
+                pageURL: "https://local.tax.service.gov.uk/simple/page/capture",
                 pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main></html>",
                 timestamp: "0000000002",
                 files: {"file1": "some contents"}
             })
         expect(res.statusCode).toEqual(400)
         expect(global.status).toEqual('PAGES_CAPTURED')
-        expect(global.capturedUrls).toEqual(["http://localhost:1234/simple/page/capture"])
+        expect(global.capturedUrls).toEqual(["https://local.tax.service.gov.uk/simple/page/capture"])
     });
 
     it("should capture an already captured page when 'captureAllPages' is true", async () => {
         try {
             config.captureAllPages = true
-            capture("http://localhost:1234/simple/page/capture")
+            capture("https://local.tax.service.gov.uk/simple/page/capture")
             applicationStatus('PAGES_CAPTURED');
 
             const res = await request(app)
                 .post('/api/capture-page')
                 .set('Content-Type', 'application/json')
                 .send({
-                    pageURL: "http://localhost:1234/simple/page/capture",
+                    pageURL: "https://local.tax.service.gov.uk/simple/page/capture",
                     pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main></html>",
                     timestamp: "0000000002",
                     files: {"file1": "some contents"}
                 })
             expect(res.statusCode).toEqual(201)
             expect(global.status).toEqual('PAGES_CAPTURED')
-            expect(global.capturedUrls).toEqual(["http://localhost:1234/simple/page/capture", "http://localhost:1234/simple/page/capture"])
+            expect(global.capturedUrls).toEqual(["https://local.tax.service.gov.uk/simple/page/capture", "https://local.tax.service.gov.uk/simple/page/capture"])
         } finally {
             config.captureAllPages = false
         }

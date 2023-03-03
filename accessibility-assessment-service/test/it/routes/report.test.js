@@ -70,7 +70,7 @@ describe('report', () => {
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://localhost:1234/simple/page/capture",
+                pageURL: "https://local.tax.service.gov.uk/simple/page/capture",
                 pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main></html>",
                 timestamp: "0000000002",
                 files: {"file1": "some contents"}

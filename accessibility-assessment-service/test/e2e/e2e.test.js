@@ -50,7 +50,7 @@ describe('accessibility-assessment-service', () => {
             .post('/api/capture-page')
             .set('Content-Type', 'application/json')
             .send({
-                pageURL: "http://localhost:1234/simple/page/capture",
+                pageURL: "https://local.tax.service.gov.uk/simple/page/capture",
                 pageHTML: "<html><head><title>Some title</title></head><main>The contents of the page</main><main>Another main will result in violation</main></html>",
                 timestamp: "0000000002",
                 files: {"file1": "some contents"}
@@ -135,7 +135,7 @@ describe('accessibility-assessment-service', () => {
             .get('/api/logs/urls')
             .then((response) => {
                 expect(response.body).toEqual({
-                    capturedUrls: ["http://localhost:1234/simple/page/capture"],
+                    capturedUrls: ["https://local.tax.service.gov.uk/simple/page/capture"],
                     excludedUrls: [],
                     errors: []
                 })

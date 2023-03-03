@@ -79,7 +79,7 @@ router.post('/', (req, res, next) => {
     }
 
     function urlIsAStub() {
-        let stubRegEx = RegExp('http:\/\/localhost:[0-9]{4}\/([a-z/-]+\-stub)');
+        let stubRegEx = RegExp('https:\/\/local.tax.service.gov.uk\/([a-z/-]+\-stub)');
         return stubRegEx.test(body.pageURL)
     }
 
@@ -89,7 +89,7 @@ router.post('/', (req, res, next) => {
     }
 
     function urlIsNotInAllowList() {
-        let allowListRegex = RegExp('http:\/\/localhost:[0-9]{4}\/(secure-message-stub)');
+        let allowListRegex = RegExp('https:\/\/local.tax.service.gov.uk\/(secure-message-stub)');
         return !allowListRegex.test(body.pageURL)
     }
 
@@ -98,7 +98,7 @@ router.post('/', (req, res, next) => {
     }
 
     function urlIsNotLocalhost() {
-        let localhostRegEx = RegExp('http:\\/\\/localhost:.*');
+        let localhostRegEx = RegExp('https:\\/\\/local.tax.service.gov.uk.*');
         return !localhostRegEx.test(body.pageURL)
     }
 })

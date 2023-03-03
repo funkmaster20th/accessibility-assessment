@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ trait TestInfo {
   def urlPath(capturedPageFolder: String): String = {
     val bufferedSource = Source.fromFile(s"$capturedPageFolder/data")
     val url            = bufferedSource.getLines().take(1).toList.head
-    val pattern        = "http:\\/\\/localhost:[0-9]{4,5}(.*)".r
+    val pattern        = "https:\\/\\/local.tax.service.gov.uk(.*)".r
     val pattern(path)  = url
     bufferedSource.close
     path

@@ -248,7 +248,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageURL\": \"http://localhost:1234/simple/page/capture\",\n    \"pageHTML\": \"<html><head><title>Some title</title></head><main>The contents of the page</main></html>\",\n    \"timestamp\": \"0000000002\",\n    \"files\": { \"file1\": \"some contents\" } \n}"
+					"raw": "{\n    \"pageURL\": \"https://local.tax.service.gov.uk/simple/page/capture\",\n    \"pageHTML\": \"<html><head><title>Some title</title></head><main>The contents of the page</main></html>\",\n    \"timestamp\": \"0000000002\",\n    \"files\": { \"file1\": \"some contents\" } \n}"
 				},
 				"url": {
 					"raw": "http://localhost:6010/api/capture-page",
@@ -277,7 +277,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageURL\": \"http://localhost:1234/simple/page/{{$randomLoremWord}}\",\n    \"pageHTML\": \"<html><head><title>Some title</title><style>body{background-color:black;} .cbanner-govuk-width-container{margin-right:max(15px, calc(15px + env(safe-area-inset-right)));margin-left:max(15px, calc(15px + env(safe-area-inset-left)))}}@media (min-width: 40.0625em){.cbanner-govuk-width-container{margin-right:30px;margin-left:30px} .test {color:white;background-color:orange;font-size:8px;margin-left:0;}.organisation-logo {background: url(../images/crests/hmrc_crest_18px.png) 5px center no-repeat; padding: 3px 0 3px 38px;}</style></head><div class='logo'><span class='organisation-logo organisation-logo-medium'> HM Revenue &amp; Customs </span></div><main>The contents of the page</main><main><h3></h3>The contents of the page <img src=''/></main></html>\",\n    \"timestamp\": \"{{$timestamp}}\",\n    \"files\": { \"file1\": \"some contents\" } \n}"
+					"raw": "{\n    \"pageURL\": \"https://local.tax.service.gov.uk/simple/page/{{$randomLoremWord}}\",\n    \"pageHTML\": \"<html><head><title>Some title</title><style>body{background-color:black;} .cbanner-govuk-width-container{margin-right:max(15px, calc(15px + env(safe-area-inset-right)));margin-left:max(15px, calc(15px + env(safe-area-inset-left)))}}@media (min-width: 40.0625em){.cbanner-govuk-width-container{margin-right:30px;margin-left:30px} .test {color:white;background-color:orange;font-size:8px;margin-left:0;}.organisation-logo {background: url(../images/crests/hmrc_crest_18px.png) 5px center no-repeat; padding: 3px 0 3px 38px;}</style></head><div class='logo'><span class='organisation-logo organisation-logo-medium'> HM Revenue &amp; Customs </span></div><main>The contents of the page</main><main><h3></h3>The contents of the page <img src=''/></main></html>\",\n    \"timestamp\": \"{{$timestamp}}\",\n    \"files\": { \"file1\": \"some contents\" } \n}"
 				},
 				"url": {
 					"raw": "http://localhost:6010/api/capture-page",
@@ -306,7 +306,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageURL\": \"http://localhost:1234/test-only/page/capture\",\n    \"pageHTML\": \"<html><head><title>Some title</title></head><main>The contents of the page</main></html>\",\n    \"timestamp\": \"0000000002\",\n    \"files\": {\"file1\":\"some contents\"} \n}"
+					"raw": "{\n    \"pageURL\": \"https://local.tax.service.gov.uk/test-only/page/capture\",\n    \"pageHTML\": \"<html><head><title>Some title</title></head><main>The contents of the page</main></html>\",\n    \"timestamp\": \"0000000002\",\n    \"files\": {\"file1\":\"some contents\"} \n}"
 				},
 				"url": {
 					"raw": "http://localhost:6010/api/capture-page",
@@ -335,7 +335,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageURL\": \"http://localhost:1234/path/to/page/with/errors\",\n    \"pageHTML\": \"<html><head><title>Some title</title></head><main>The contents of the page</main></html>\",\n    \"timestamp\": \"0000000002\",\n    \"files\": {\"file1\":\"some contents\"},\n    \"errors\":  [ { \"failedUrl\": \"/pay/assets/js/monitoring.ga-events.js\",\n    \t\t\t\t\"message\": \"Request to the URL failed to return a 2XX response\",\n    \t\t\t\t\"statusReceived\": 404 } ]\n}"
+					"raw": "{\n    \"pageURL\": \"https://local.tax.service.gov.uk/path/to/page/with/errors\",\n    \"pageHTML\": \"<html><head><title>Some title</title></head><main>The contents of the page</main></html>\",\n    \"timestamp\": \"0000000002\",\n    \"files\": {\"file1\":\"some contents\"},\n    \"errors\":  [ { \"failedUrl\": \"/pay/assets/js/monitoring.ga-events.js\",\n    \t\t\t\t\"message\": \"Request to the URL failed to return a 2XX response\",\n    \t\t\t\t\"statusReceived\": 404 } ]\n}"
 				},
 				"url": {
 					"raw": "http://localhost:6010/api/capture-page",
@@ -364,7 +364,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"pageURL\": \"http://localhost:1234/path/to/page/with/lots/of/errors\",\n    \"pageHTML\": \"<html><head><title>Some title</title></head><main>The contents of the page</main></html>\",\n    \"timestamp\": \"0000000002\",\n    \"files\": {\"file1\":\"some contents\"},\n    \"errors\":  [ { \"failedUrl\": \"/pay/assets/js/monitoring.ga-events.js\",\n    \t\t\t\t\"message\": \"Request to the URL failed to return a 2XX response\",\n    \t\t\t\t\"statusReceived\": 404 },\n    \t\t\t\t{ \"failedUrl\": \"/pay/assets/js/another.js\",\n    \t\t\t\t\"message\": \"Request to the URL failed to return a 2XX response\",\n    \t\t\t\t\"statusReceived\": 404 }]\n}"
+					"raw": "{\n    \"pageURL\": \"https://local.tax.service.gov.uk/path/to/page/with/lots/of/errors\",\n    \"pageHTML\": \"<html><head><title>Some title</title></head><main>The contents of the page</main></html>\",\n    \"timestamp\": \"0000000002\",\n    \"files\": {\"file1\":\"some contents\"},\n    \"errors\":  [ { \"failedUrl\": \"/pay/assets/js/monitoring.ga-events.js\",\n    \t\t\t\t\"message\": \"Request to the URL failed to return a 2XX response\",\n    \t\t\t\t\"statusReceived\": 404 },\n    \t\t\t\t{ \"failedUrl\": \"/pay/assets/js/another.js\",\n    \t\t\t\t\"message\": \"Request to the URL failed to return a 2XX response\",\n    \t\t\t\t\"statusReceived\": 404 }]\n}"
 				},
 				"url": {
 					"raw": "http://localhost:6010/api/capture-page",
